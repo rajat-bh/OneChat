@@ -78,6 +78,12 @@
   background-color: #c33c30;
 }
 
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  font-size: small;
+}
 
 @media (max-width: 600px) {
   .login-form {
