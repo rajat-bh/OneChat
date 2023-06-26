@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Chats.css';
 import { messages } from '../../constants/tempMessages';
 import { tempChats } from '../../constants/tempChats';
+import { Application } from '@splinetool/runtime';
+
+const SPLINE_URL = process.env.REACT_APP_CHATS_SPLINE_URL;
 
 const Chats = () => {
   const [selectedChat, setSelectedChat] = useState(null);
@@ -48,6 +51,10 @@ const Chats = () => {
   };
 
   useEffect(() => {
+    const canvas = document.getElementById('canvas3d');
+    const app = new Application(canvas);
+    app.load(SPLINE_URL);
+
     if (messageInputRef.current) {
       messageInputRef.current.focus();
     }
@@ -109,10 +116,9 @@ const Chats = () => {
           <div className="no-chat-selected">No chat selected</div>
         )}
       </div>
+      <canvas id="canvas3d" className="spline-background"></canvas>
     </div>
   );
 };
 
 export default Chats;
-
-
